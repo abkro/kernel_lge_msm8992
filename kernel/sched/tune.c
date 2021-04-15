@@ -788,6 +788,10 @@ boost_write(struct cgroup_subsys_state *css, struct cftype *cft,
 
 	if (boost < -100 || boost > 100)
 		return -EINVAL;
+
+	if (boost <= 10)
+		boost = 0;
+
 	boost_pct = boost;
 
 	/*
@@ -1052,7 +1056,7 @@ static struct schedtune *getSchedtune(char *st_name)
 {
 	int idx;
 
-	for (idx = 1; idx < BOOSTGROUPS_COUNT; ++idx) {
+	for (idx = 0; idx < BOOSTGROUPS_COUNT; ++idx) {
 		char name_buf[NAME_MAX + 1];
 		struct schedtune *st = allocated_group[idx];
 
