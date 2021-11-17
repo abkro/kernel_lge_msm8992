@@ -50,7 +50,7 @@ int hdcp_disable;
 /* external_block_en = 1: enable, 0: disable*/
 int external_block_en = 0;
 
-static bool irq_enable;
+static bool irq_enable = 1;
 
 /* Flag of Regulator On/Off */
 /* regulator_flag = 1: enable, 0: disable */
